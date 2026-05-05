@@ -1,0 +1,53 @@
+--- a/gl/lib/unistd.in.h
++++ b/gl/lib/unistd.in.h
+@@ -1229,7 +1229,7 @@
+                                     _GL_ARG_NONNULL ((1)));
+ _GL_CXXALIAS_RPL (gethostname, int, (char *name, size_t len));
+ # else
+-#  if !@HAVE_GETHOSTNAME@
++#  if 0  /* SCO patch */
+ _GL_FUNCDECL_SYS (gethostname, int, (char *name, size_t len)
+                                     _GL_ARG_NONNULL ((1)));
+ #  endif
+--- a/gl/lib/getprogname.c
++++ b/gl/lib/getprogname.c
+@@ -284,7 +284,7 @@
+     }
+   return "?";
+ # else
+-#  error "getprogname module not ported to this OS"
++  return "?";
+ # endif
+ }
+ 
+--- a/gl/lib/gethostname.c
++++ b/gl/lib/gethostname.c
+@@ -39,7 +39,7 @@
+ #include <stddef.h>
+ 
+ int
+-gethostname (char *name, size_t len)
++gethostname (char *name, int len)
+ {
+ #ifdef HAVE_UNAME
+   struct utsname uts;
+@@ -87,7 +87,7 @@
+ #undef gethostname
+ 
+ int
+-rpl_gethostname (char *name, size_t len)
++rpl_gethostname (char *name, int len)
+ {
+   int r;
+ 
+--- a/lib/buildcmd.c
++++ b/lib/buildcmd.c
+@@ -44,7 +44,7 @@
+    We try to make it as large as possible.  See bc_get_arg_max() below. */
+ #if defined NCARGS && !defined ARG_MAX
+ /* We include sys/param.h in order to detect this case. */
+-# error "You have an unusual system.  Once you remove this error message from buildcmd.c, it should work, but please make sure that DejaGnu is installed on your system and that 'make check' passes before using the findutils programs.  Please mail bug-findutils@gnu.org to tell us about your system."
++/* SCO: error suppressed; ARG_MAX=NCARGS path is fine */
+ # define ARG_MAX NCARGS
+ #endif
+ 
