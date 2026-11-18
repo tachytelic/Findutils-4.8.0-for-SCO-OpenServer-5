@@ -113,5 +113,5 @@ this repo applied. The patches and build script are released under MIT.
   [GNU grep 3.7 for SCO](https://github.com/tachytelic/Grep-3.7-for-SCO-OpenServer-5),
   [GNU gawk 5.1.1 for SCO](https://github.com/tachytelic/Gawk-5.1.1-for-SCO-OpenServer-5)
   — sibling builds.
-- [More SCO OpenServer 5 binaries](https://tachytelic.net/2017/07/sco-openserver-5-binaries/)
+- [More SCO OpenServer 5 binaries](https://scoexpert.com/guides/sco-openserver-5-binaries/)
   — the hub.
